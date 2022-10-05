@@ -33,6 +33,7 @@ export interface NexusGenObjects {
     age?: string | null; // String
     id?: number | null; // Int
     name?: string | null; // String
+    subjects: Array<NexusGenRootTypes['Subject'] | null>; // [Subject]!
   }
   Subject: { // root type
     category?: string | null; // String
@@ -54,7 +55,7 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Query: { // field return type
-    ok: boolean; // Boolean!
+    allstudents: NexusGenRootTypes['Student'] | null; // Student
   }
   Student: { // field return type
     age: string | null; // String
@@ -72,7 +73,7 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   Query: { // field return type name
-    ok: 'Boolean'
+    allstudents: 'Student'
   }
   Student: { // field return type name
     age: 'String'
@@ -89,6 +90,11 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Query: {
+    allstudents: { // args
+      id: number; // Int!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {

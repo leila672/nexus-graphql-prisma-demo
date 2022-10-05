@@ -21,7 +21,7 @@ model Subject {
   id Int @id @default(autoincrement())
   name String 
   category String
-  subjects StudentOnSubject[] 
+  students StudentOnSubject[] 
 }
 
 model StudentOnSubject{

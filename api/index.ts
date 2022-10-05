@@ -1,5 +1,5 @@
 import { server } from "./server";
 
 server.listen().then(({url})=>{
-    console.log("server is running");
+    console.log("server is running" + url);
 })
