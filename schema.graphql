@@ -3,19 +3,19 @@
 
 
 type Query {
-  allstudents(id: Int!): Student
+  allstudents: [Student!]!
 }
 
 type Student {
-  age: String
-  id: Int
-  name: String
-  subjects: [Subject]!
+  age: String!
+  id: Int!
+  name: String!
+  subject: Subject
 }
 
 type Subject {
   category: String
-  id: Int
+  id: Int!
   name: String
-  students: [Student]!
+  students: [Student!]!
 }

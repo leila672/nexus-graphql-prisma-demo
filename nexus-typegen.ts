@@ -30,16 +30,14 @@ export interface NexusGenScalars {
 export interface NexusGenObjects {
   Query: {};
   Student: { // root type
-    age?: string | null; // String
-    id?: number | null; // Int
-    name?: string | null; // String
-    subjects: Array<NexusGenRootTypes['Subject'] | null>; // [Subject]!
+    age: string; // String!
+    id: number; // Int!
+    name: string; // String!
   }
   Subject: { // root type
     category?: string | null; // String
-    id?: number | null; // Int
+    id: number; // Int!
     name?: string | null; // String
-    students: Array<NexusGenRootTypes['Student'] | null>; // [Student]!
   }
 }
 
@@ -55,19 +53,19 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Query: { // field return type
-    allstudents: NexusGenRootTypes['Student'] | null; // Student
+    allstudents: NexusGenRootTypes['Student'][]; // [Student!]!
   }
   Student: { // field return type
-    age: string | null; // String
-    id: number | null; // Int
-    name: string | null; // String
-    subjects: Array<NexusGenRootTypes['Subject'] | null>; // [Subject]!
+    age: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    subject: NexusGenRootTypes['Subject'] | null; // Subject
   }
   Subject: { // field return type
     category: string | null; // String
-    id: number | null; // Int
+    id: number; // Int!
     name: string | null; // String
-    students: Array<NexusGenRootTypes['Student'] | null>; // [Student]!
+    students: NexusGenRootTypes['Student'][]; // [Student!]!
   }
 }
 
@@ -79,7 +77,7 @@ export interface NexusGenFieldTypeNames {
     age: 'String'
     id: 'Int'
     name: 'String'
-    subjects: 'Subject'
+    subject: 'Subject'
   }
   Subject: { // field return type name
     category: 'String'
@@ -90,11 +88,6 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
-  Query: {
-    allstudents: { // args
-      id: number; // Int!
-    }
-  }
 }
 
 export interface NexusGenAbstractTypeMembers {

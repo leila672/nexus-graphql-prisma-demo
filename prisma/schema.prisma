@@ -11,24 +11,16 @@ datasource db {
 }
 
 model Student {
-  id Int @id @default(autoincrement())
-  name String 
-  age String
-  subjects StudentOnSubject[] 
+  id        Int      @id @default(autoincrement())
+  name      String
+  age       String
+  subject   Subject? @relation(fields: [subjectId], references: [id])
+  subjectId Int?
 }
 
 model Subject {
-  id Int @id @default(autoincrement())
-  name String 
+  id       Int       @id @default(autoincrement())
+  name     String
   category String
-  students StudentOnSubject[] 
-}
-
-model StudentOnSubject{
-  student Student @relation(fields: [studentId] , references: [id])
-  studentId Int
-  subject Subject @relation(fields: [subjectId] , references: [id])
-  subjectId Int
-
-  @@id([studentId, subjectId])
+  students Student[]
 }
