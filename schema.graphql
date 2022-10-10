@@ -2,12 +2,17 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  addstudent(age: Int!, name: String!): [Student!]!
+}
+
 type Query {
   allstudents: [Student!]!
+  student(id: Int!): [Student!]!
 }
 
 type Student {
-  age: String!
+  age: Int!
   id: Int!
   name: String!
   subject: Subject

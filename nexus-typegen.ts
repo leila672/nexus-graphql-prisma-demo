@@ -28,9 +28,10 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Mutation: {};
   Query: {};
   Student: { // root type
-    age: string; // String!
+    age: number; // Int!
     id: number; // Int!
     name: string; // String!
   }
@@ -52,11 +53,15 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    addstudent: NexusGenRootTypes['Student'][]; // [Student!]!
+  }
   Query: { // field return type
     allstudents: NexusGenRootTypes['Student'][]; // [Student!]!
+    student: NexusGenRootTypes['Student'][]; // [Student!]!
   }
   Student: { // field return type
-    age: string; // String!
+    age: number; // Int!
     id: number; // Int!
     name: string; // String!
     subject: NexusGenRootTypes['Subject'] | null; // Subject
@@ -70,11 +75,15 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Mutation: { // field return type name
+    addstudent: 'Student'
+  }
   Query: { // field return type name
     allstudents: 'Student'
+    student: 'Student'
   }
   Student: { // field return type name
-    age: 'String'
+    age: 'Int'
     id: 'Int'
     name: 'String'
     subject: 'Subject'
@@ -88,6 +97,17 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    addstudent: { // args
+      age: number; // Int!
+      name: string; // String!
+    }
+  }
+  Query: {
+    student: { // args
+      id: number; // Int!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {

@@ -13,7 +13,7 @@ datasource db {
 model Student {
   id        Int      @id @default(autoincrement())
   name      String
-  age       String
+  age       Int
   subject   Subject? @relation(fields: [subjectId], references: [id])
   subjectId Int?
 }

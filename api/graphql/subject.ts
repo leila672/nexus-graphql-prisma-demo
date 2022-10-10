@@ -10,7 +10,9 @@ export const Subject = objectType({
         t.nonNull.list.nonNull.field("students",{
             type:Student,
             resolve(parent, args, ctx) {   // 2
-                return ctx.db.subject.findUnique({ where: { id : parent.id } }).students();
+                return ctx.db.subject
+                .findUnique({ where: { id : parent.id } })
+                .students();
             },
         })
      }
